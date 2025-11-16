@@ -1,10 +1,15 @@
-resource "time_sleep" "wait" {
-  create_duration = "30s"
+# main.tf in test-endpoint module
+data "http" "test_endpoint" {
+url = var.endpoint
+}
+data "http" "test_endpoint_not_found" {
+  url = "${var.endpoint}/does-not-exist"
 }
 
-data "http" "test_endpoint" {
-  url    = var.endpoint
-  method = "GET"
 
-  depends_on = [time_sleep.wait]
+output "status_code" {
+value = data.http.test_endpoint.status_code
+}
+output "response_body" {
+value = data.http.test_endpoint.response_body
 }

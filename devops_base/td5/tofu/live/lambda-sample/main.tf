@@ -1,28 +1,31 @@
 provider "aws" {
-  region = "eu-central-1"
+  region = "us-east-2"
 }
 
 module "function" {
   source = "github.com/brikis98/devops-book//ch3/tofu/modules/lambda"
 
-  name = var.name
+  name = "lambda-sample"         
 
-  src_dir = "${path.module}/src"
-  runtime = "nodejs20.x"
-  handler = "index.handler"
+  src_dir = "${path.module}/src" 
+  runtime = "nodejs20.x"         
+  handler = "index.handler"      
 
-  memory_size = 128
-  timeout     = 5
+  memory_size = 128              
+  timeout     = 5                
 
-  environment_variables = {
+  environment_variables = {      
     NODE_ENV = "production"
   }
 }
 
-module "gateway" {
-  source = "github.com/brikis98/devops-book//ch3/tofu/modules/api-gateway"
+resource "aws_lambda_function_url" "default" {
+  function_name      = module.function.function_name
+  authorization_type = "NONE"
+}
 
-  name = var.name
-  function_arn       = module.function.function_arn
-  api_gateway_routes = ["GET /"]
+output "api_endpoint" {
+  description = "The URL of the Lambda function (for validation tests)"
+  value       = aws_lambda_function_url.default.function_url
+
 }
