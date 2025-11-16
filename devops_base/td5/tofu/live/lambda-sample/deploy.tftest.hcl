@@ -22,17 +22,17 @@ run "validate" {
   }
 
   assert {
-    condition     = jsondecode(data.http.test_endpoint.response_body).message == "Fundamentals of DevOps!"
+    condition     = jsondecode(data.http.test_endpoint.response_body).message == "Hello from JSON!"
     error_message = "Unexpected JSON body: ${data.http.test_endpoint.response_body}"
   }
  
-  # assert {
-  #   condition     = data.http.test_endpoint_not_found.status_code == 404
-  #   error_message = "Expected 404 for non-existent path, got ${data.http.test_endpoint_not_found.status_code}"
-  # }
+  assert {
+    condition     = data.http.test_endpoint_not_found.status_code == 404
+    error_message = "Expected 404 for non-existent path, got ${data.http.test_endpoint_not_found.status_code}"
+  }
 
-  # assert {
-  #   condition     = jsondecode(data.http.test_endpoint_not_found.response_body).error == "Resource not found"
-  #   error_message = "Unexpected error response: ${data.http.test_endpoint_not_found.response_body}"
-  # }
+  assert {
+    condition     = jsondecode(data.http.test_endpoint_not_found.response_body).error == "Resource not found"
+    error_message = "Unexpected error response: ${data.http.test_endpoint_not_found.response_body}"
+  }
 }
