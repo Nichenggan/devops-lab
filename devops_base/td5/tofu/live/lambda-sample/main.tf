@@ -5,7 +5,7 @@ provider "aws" {
 module "function" {
   source = "github.com/brikis98/devops-book//ch3/tofu/modules/lambda"
 
-  name = "lambda-sample"         
+  name = var.name      
 
   src_dir = "${path.module}/src" 
   runtime = "nodejs20.x"         
