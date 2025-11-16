@@ -27,6 +27,6 @@ module "iam_roles" {
   enable_iam_role_for_apply = true                                
 
   # TODO: fill in your own bucket and table name here!
-  tofu_state_bucket         = "my-open-tofu-bucket-chenyi" 
-  tofu_state_dynamodb_table = "my-open-tofu-dynamodb-table-chenyi" 
+  tofu_state_bucket         = "my-open-tofu-bucket-chenyi-cd" 
+  tofu_state_dynamodb_table = "my-open-tofu-bucket-chenyi-cd" 
 }
