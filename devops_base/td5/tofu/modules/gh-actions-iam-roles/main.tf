@@ -186,7 +186,10 @@ data "aws_iam_policy_document" "apply_serverless_app" {
       "iam:UpdateRole",
       "iam:PassRole",
       "iam:List*Role*",
-      "iam:Get*Role*"
+      "iam:Get*Role*",
+      "iam:PutRolePolicy",      ## Added for inline policies
+      "iam:AttachRolePolicy",   ## Added for managed policies
+      "iam:DetachRolePolicy"    ## Added for managed policies
     ]
     resources = ["arn:aws:iam::*:role/${var.lambda_base_name}*"]
   }
