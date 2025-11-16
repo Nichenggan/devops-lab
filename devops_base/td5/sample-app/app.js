@@ -2,12 +2,12 @@ const express = require('express');
 const app = express();
 
 app.get('/', (req, res) => {
-  res.send('Hello, World!');
+  // res.send('Hello, World!');
+  res.send('DevOps Labs!');
 });
 
 app.get('/name/:name', (req, res) => {
-  // res.send(`Hello, ${req.params.name}!`);
-  res.send('DevOps Labs!'); // Réponse statique modifiée pour l'exercice
+  res.send(`Hello, ${req.params.name}!`);
 });
 
 app.get('/add/:a/:b', (req, res) => {
