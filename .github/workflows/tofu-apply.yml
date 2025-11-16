@@ -2,7 +2,7 @@ name: Tofu Apply
 on:
   push:
     branches: ["main"]
-    paths: ["td5/scripts/tofu/live/lambda-sample/**"]
+    paths: ["devops_base/td5/tofu/live/lambda-sample/**"]
 jobs:
   apply:
     name: "Tofu Apply"
