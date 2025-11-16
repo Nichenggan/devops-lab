@@ -22,7 +22,7 @@ run "validate" {
   }
 
   assert {
-    condition     = jsondecode(data.http.test_endpoint.response_body).message == "Hello from JSON!"
+    condition     = jsondecode(data.http.test_endpoint.response_body).message == "DevOps Labs!"
     error_message = "Unexpected JSON body: ${data.http.test_endpoint.response_body}"
   }
  
