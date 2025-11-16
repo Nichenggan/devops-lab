@@ -7,7 +7,7 @@ app.get('/', (req, res) => {
 
 app.get('/name/:name', (req, res) => {
   // res.send(`Hello, ${req.params.name}!`);
-  res.send('DevOps Labs!');
+  res.send('DevOps Labs!'); // Réponse statique modifiée
 });
 
 app.get('/add/:a/:b', (req, res) => {
