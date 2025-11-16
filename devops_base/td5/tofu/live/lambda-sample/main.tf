@@ -1,7 +1,7 @@
 provider "aws" {
   region = "eu-central-1"
 }
-
+#new test comment
 module "function" {
   source = "github.com/brikis98/devops-book//ch3/tofu/modules/lambda"
 
